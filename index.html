@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy 47th, Umma! ♡</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;text-align:center;font-family:"Trebuchet MS",sans-serif;color:#79536b;background:#fff8df;overflow-x:hidden}
+button{border:0;border-radius:30px;padding:13px 22px;background:#e875a3;color:white;font-size:16px;cursor:pointer;box-shadow:0 4px #c75b88;margin:5px}
+.hero{min-height:100vh;padding:55px 15px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;background:linear-gradient(145deg,#fff6cf,#ffebf4,#fff8dc);overflow:hidden}
+h1{font-family:Georgia,serif;font-size:clamp(42px,9vw,76px);font-weight:normal;color:#df6c9c;margin:15px 0}
+h2{font-family:Georgia,serif;color:#df6c9c;font-weight:normal;font-size:clamp(28px,6vw,42px)}
+p{line-height:1.85}
+.kicker{letter-spacing:3px;font-size:12px;color:#b17ba0;font-weight:bold}
+.subtitle{max-width:440px}
+.balloons{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.balloon{position:absolute;bottom:-100px;width:40px;height:52px;border-radius:50%;background:var(--c);opacity:.7;animation:float var(--t) linear infinite;animation-delay:var(--d)}
+.balloon:after{content:"";position:absolute;left:20px;top:54px;height:75px;border-left:1px solid #bda2b4}
+@keyframes float{to{transform:translateY(-125vh) rotate(12deg)}}
+.cakearea{position:relative;width:240px;height:190px;margin:20px}
+.plate{position:absolute;bottom:8px;left:0;width:240px;height:18px;border-radius:50%;background:#d9c5ed}
+.cake{position:absolute;bottom:25px;left:25px;width:190px;height:85px;background:#f5a7c7;border-radius:12px 12px 18px 18px;box-shadow:inset 0 -9px #e78db5}
+.cake:before{content:"";position:absolute;top:-13px;width:100%;height:27px;border-radius:50%;background:#fff4e8}
+.cake:after{content:"♡ ✿ ♡ ✿ ♡";position:absolute;top:30px;left:0;width:100%;color:white;font-size:20px}
+.candles{position:absolute;top:48px;left:42px;width:156px;display:flex;justify-content:space-around}
+.candle{position:relative;width:12px;height:48px;background:repeating-linear-gradient(135deg,white 0 5px,#bba5e8 5px 10px);border-radius:4px}
+.flame{position:absolute;top:-23px;left:-1px;width:14px;height:21px;background:#ffbd50;border-radius:50%;box-shadow:0 0 15px #ffc75c;animation:flicker .5s infinite alternate}
+@keyframes flicker{to{transform:rotate(9deg) scale(1.1)}}
+.candle.out .flame{display:none}
+#surprise{display:none;padding:55px 17px;background:linear-gradient(#ffedf5,#fff8d9)}
+#surprise.show{display:block;animation:reveal 1s}
+@keyframes reveal{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card{max-width:700px;margin:30px auto;background:#fffdf6;border:2px solid #efb3ce;outline:1px dashed #e9b1ca;outline-offset:-9px;padding:clamp(25px,6vw,55px);box-shadow:7px 8px #f6dca7;text-align:left;line-height:1.9}
+.card h2{text-align:center}
+.card p{white-space:pre-line}
+.gallery{max-width:950px;margin:30px auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.photo{background:white;padding:8px 8px 15px;box-shadow:0 5px 15px #9a718022;transform:rotate(var(--r))}
+.photo img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.photo p{text-align:center;font-family:Georgia,serif;font-size:14px;margin:10px 0 0}
+#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:5}
+@media(min-width:650px){.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important}}
+</style>
+</head>
+<body>
+<canvas id="confetti"></canvas>
+
+<section class="hero">
+<div class="balloons" id="balloons"></div>
+<div class="kicker">A LITTLE SCRAPBOOK MADE WITH LOVE</div>
+<p>♡ my favourite person ♡</p>
+<h1>Happy 47th,<br>Umma! 🌷</h1>
+<p class="subtitle">For the person who makes every day warmer, sillier, and a lot more loved.</p>
+
+<div class="cakearea">
+<div class="plate"></div><div class="cake"></div>
+<div class="candles" id="candles">
+<div class="candle"><span class="flame"></span></div>
+<div class="candle"><span class="flame"></span></div>
+<div class="candle"><span class="flame"></span></div>
+<div class="candle"><span class="flame"></span></div>
+<div class="candle"><span class="flame"></span></div>
+</div></div>
+
+<p id="instructions">Make a wish and blow out your candles! ✨</p>
+<div id="controls">
+<button id="blow">💨 Blow out a candle</button>
+<button id="mic" style="background:#b39add;box-shadow:0 4px #9279c1">🎤 Blow with your breath</button>
+</div>
+<p>🎀 🌼 🎀</p>
+</section>
+
+<section id="surprise">
+<div class="kicker">THE BEST PART OF MY WORLD</div>
+<h2>A letter for my Umma 💌</h2>
+<article class="card">
+<p style="text-align:center;font-size:25px">🌼 ♡ 🌷 ♡ 🌼</p>
+<h2>Happy 47th Umma!!</h2>
+<p>Happy 47th umma!! I love you so much and I am so lucky I get to spend time with you everyday and be your favourite person.
+
+You understand me so well and have so much love for the people around you, you are kind and loving and you have so much love for literally everyone around you. You have so much joy and happiness; it makes everyone feel safe.
+
+You have so much deep empathy and understanding for others, and you are such a good listener. You make me laugh, and your spontaneity makes every day an adventure.
+
+My favourite thing about you is how safe and childlike you are, and it is my joy to love you. You truly are my favourite person, and I hope you feel loved on your special day; I love you.</p>
+<p style="text-align:right;color:#df6c9c">forever your favourite person ♡</p>
+</article>
+
+<div class="kicker">LITTLE MOMENTS, BIG LOVE</div>
+<h2>Our scrapbook 📸</h2>
+<p>More memories with you, always. ♡</p>
+<div class="gallery">
+<div class="photo" style="--r:-2deg"><img src="photo1.jpg" alt="A spring memory"><p>under the blossoms 🌸</p></div>
+<div class="photo" style="--r:2deg"><img src="photo2.jpg" alt="A happy memory"><p>your happy laugh ♡</p></div>
+<div class="photo" style="--r:-1deg"><img src="photo3.jpg" alt="A special outing"><p>sweet little dates 🍓</p></div>
+<div class="photo" style="--r:2deg"><img src="photo4.jpg" alt="A sunny memory"><p>sunshine & fluffy friends 🐶</p></div>
+<div class="photo" style="--r:-2deg"><img src="photo5.png" alt="A precious family memory"><p>love from the beginning ♡</p></div>
+</div>
+<h2>I love you to the moon & back 🌙</h2>
+<p>I hope this year gives you back even a little of all the love you give everyone else.</p>
+<button onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to the cake ↑</button>
+</section>
+
+<script>
+const $=id=>document.getElementById(id);
+const candles=[...document.querySelectorAll(".candle")];
+let count=0,done=false,stream=null,ctxAudio=null,frame=null;
+
+const colors=["#f5a6c6","#ffe68d","#c9b4ec","#a8ded4","#ffc6a8"];
+for(let i=0;i<14;i++){
+ const b=document.createElement("span");b.className="balloon";
+ b.style.left=Math.random()*97+"%";b.style.setProperty("--c",colors[i%colors.length]);
+ b.style.setProperty("--t",(10+Math.random()*10)+"s");b.style.setProperty("--d",(-Math.random()*18)+"s");
+ $("balloons").appendChild(b);
+}
+
+const canvas=$("confetti"),ctx=canvas.getContext("2d");let bits=[];
+function resize(){let d=Math.min(devicePixelRatio||1,2);canvas.width=innerWidth*d;canvas.height=innerHeight*d;canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";ctx.setTransform(d,0,0,d,0,0)}
+addEventListener("resize",resize);resize();
+
+function burst(n=130){
+ for(let i=0;i<n;i++)bits.push({x:Math.random()*innerWidth,y:-20-Math.random()*100,vx:(Math.random()-.5)*5,vy:2+Math.random()*4,size:4+Math.random()*6,c:colors[Math.floor(Math.random()*colors.length)],a:Math.random()*6,s:(Math.random()-.5)*.2,life:180});
+}
+function animate(){
+ ctx.clearRect(0,0,innerWidth,innerHeight);
+ bits=bits.filter(b=>b.life-->0&&b.y<innerHeight+30);
+ for(const b of bits){b.x+=b.vx;b.y+=b.vy;b.vy+=.025;b.a+=b.s;ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.a);ctx.fillStyle=b.c;ctx.fillRect(-b.size/2,-b.size/2,b.size,b.size*.7);ctx.restore()}
+ requestAnimationFrame(animate);
+}
+animate();setTimeout(()=>burst(40),500);
+
+function blow(){
+ if(done)return;
+ const candle=candles.find(c=>!c.classList.contains("out"));
+ if(!candle)return;
+ candle.classList.add("out");count++;
+ $("instructions").textContent=count+" of 5 candles blown out! ♡";
+ if(count===5){
+  done=true;stopMic();$("controls").style.display="none";
+  $("instructions").textContent="Your wish is on its way! 💖";
+  burst(260);setTimeout(()=>burst(180),500);
+  $("surprise").classList.add("show");
+  setTimeout(()=>$("surprise").scrollIntoView({behavior:"smooth"}),350);
+ }
+}
+$("blow").onclick=blow;
+
+$("mic").onclick=async()=>{
+ if(!navigator.mediaDevices?.getUserMedia){$("instructions").textContent="Microphone unavailable—use the pink button instead!";return}
+ try{
+  $("instructions").textContent="Allow microphone access, then gently blow! 💨";
+  stream=await navigator.mediaDevices.getUserMedia({audio:true});
+  ctxAudio=new(window.AudioContext||window.webkitAudioContext)();
+  const source=ctxAudio.createMediaStreamSource(stream),analyser=ctxAudio.createAnalyser();
+  analyser.fftSize=1024;source.connect(analyser);
+  const data=new Uint8Array(analyser.fftSize);let streak=0,last=0;
+  function detect(){
+   if(done)return;
+   analyser.getByteTimeDomainData(data);let sum=0;
+   for(const v of data){let x=(v-128)/128;sum+=x*x}
+   let volume=Math.sqrt(sum/data.length);
+   streak=volume>.19?streak+1:0;
+   if(streak>=5&&Date.now()-last>800){last=Date.now();streak=0;blow()}
+   frame=requestAnimationFrame(detect);
+  }
+  detect();
+ }catch(e){$("instructions").textContent="Microphone unavailable—tap the pink button instead!";stopMic()}
+};
+function stopMic(){
+ if(frame)cancelAnimationFrame(frame);
+ if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}
+ if(ctxAudio&&ctxAudio.state!=="closed")ctxAudio.close();
+ ctxAudio=null;
+}
+addEventListener("pagehide",stopMic);
+</script>
+</body>
+</html>
